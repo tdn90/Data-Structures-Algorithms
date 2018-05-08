@@ -1,5 +1,6 @@
 package dataStruct;
 
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -7,7 +8,7 @@ import java.util.NoSuchElementException;
  * This is my self-implemented version of Doubly Linked List
  * @param <T>: Generic data type of objects to be dealt with
  */
-public class LinkedList<T> implements List<T>, Queue<T>{
+public class LinkedList<T> implements List<T>, Queue<T>, Stack<T>{
     private static class Node<T> {
         private T content;
         private Node<T> prev;
@@ -220,6 +221,43 @@ public class LinkedList<T> implements List<T>, Queue<T>{
     public T peek() {
         if (isEmpty()) return null;
         else return head.content;
+    }
+
+    /**
+     * Retrieves and removes the object on top of this Stack
+     *
+     * @return the object on the top of this Stack upon its removal
+     * @throws EmptyStackException if the stack is empty
+     */
+    @Override
+    public T pop() {
+        if (isEmpty()) throw new EmptyStackException();
+        else {
+            T result;
+            // Remove the only element
+            if (size == 1) {
+                result = head.content;
+                head = tail = null;
+            }
+            else {  // Remove the tail
+                result = tail.content;
+                tail = tail.prev;
+                tail.next = null;
+            }
+            size--;
+            return result;
+        }
+    }
+
+    /**
+     * Pushes an element on top of this Stack
+     *
+     * @param obj : object to be pushed on stack
+     * @return the object itself
+     */
+    @Override
+    public boolean push(T obj) {
+        return this.add(obj);
     }
 
 
