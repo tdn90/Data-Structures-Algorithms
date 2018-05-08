@@ -2,6 +2,7 @@ package dataStruct;
 
 import java.util.EmptyStackException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class FixedSizeStack<T> implements Stack<T>{
     private T[] arr;
@@ -74,7 +75,37 @@ public class FixedSizeStack<T> implements Stack<T>{
     }
 
     public Iterator iterator() {
-        //TODO: implement this
-        return null;
+        return new StackIterator();
+    }
+
+    private class StackIterator<T> implements Iterator<T> {
+        private int currentPos;
+
+        public StackIterator() {
+            currentPos = nextPos-1;
+        }
+
+        /**
+         * Returns {@code true} if the iteration has more elements.
+         * (In other words, returns {@code true} if {@link #next} would
+         * return an element rather than throwing an exception.)
+         *
+         * @return {@code true} if the iteration has more elements
+         */
+        @Override
+        public boolean hasNext() {
+            return currentPos >= 0;
+        }
+
+        /**
+         * Returns the next element in the iteration.
+         *
+         * @return the next element in the iteration
+         * @throws NoSuchElementException if the iteration has no more elements
+         */
+        @Override
+        public T next() {
+            return (T) arr[currentPos--];
+        }
     }
 }
