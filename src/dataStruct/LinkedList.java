@@ -266,9 +266,43 @@ public class LinkedList<T> implements List<T>, Queue<T>, Stack<T>{
      * from index 0 to end
      */
     @Override
-    public Iterator<T> iterator() {
-        //TODO: implement this
-        return null;
+    public Iterator iterator() {
+        return new LinkedListIterator();
+    }
+
+    private class LinkedListIterator implements Iterator{
+        private Node<T> nextNode;
+
+        LinkedListIterator() {
+            nextNode = head;
+        }
+        /**
+         * Returns {@code true} if the iteration has more elements.
+         * (In other words, returns {@code true} if {@link #next} would
+         * return an element rather than throwing an exception.)
+         *
+         * @return {@code true} if the iteration has more elements
+         */
+        @Override
+        public boolean hasNext() {
+            return nextNode != null;
+        }
+
+        /**
+         * Returns the next element in the iteration.
+         *
+         * @return the next element in the iteration
+         * @throws NoSuchElementException if the iteration has no more elements
+         */
+        @Override
+        public T next() {
+            if (!hasNext()) throw new NoSuchElementException();
+            else {
+                T result = nextNode.content;
+                nextNode = nextNode.next;
+                return result;
+            }
+        }
     }
 
     /**
