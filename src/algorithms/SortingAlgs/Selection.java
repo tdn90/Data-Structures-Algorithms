@@ -5,7 +5,7 @@ public class Selection extends SortAlgs {
         for (int i = 0; i < arr.length-1; i++) {
             int minIndex = i;
             for (int j = i+1; j < arr.length; j++) {
-                if (less(arr,j,i)) minIndex = j;
+                if (less(arr,j,minIndex)) minIndex = j;
             }
             swap(arr,i,minIndex);
         }
