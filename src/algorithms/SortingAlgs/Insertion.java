@@ -1,7 +1,5 @@
 package algorithms.SortingAlgs;
 
-import java.util.Arrays;
-
 public class Insertion{
     public static void sort(Comparable[] arr) {
         for (int i = 1; i < arr.length; i++) {
