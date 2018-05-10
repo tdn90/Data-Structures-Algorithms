@@ -1,7 +1,5 @@
 package dataStruct;
 
-import java.util.Arrays;
-
 public abstract class Heap<T extends Comparable> {
     protected Comparable[] arr;
     private int size;
@@ -95,4 +93,10 @@ public abstract class Heap<T extends Comparable> {
     }
 
     public abstract boolean morePrior(int a, int b);
+
+    boolean isHeap(int idx) {
+        if (2*idx > size) return true;
+        else if (2*idx+1 > size) return morePrior(idx,2*idx);
+        else return morePrior(idx,2*idx) && morePrior(idx,2*idx+1) && isHeap(2*idx) && isHeap(2*idx+1);
+    }
 }
