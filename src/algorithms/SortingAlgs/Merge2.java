@@ -10,12 +10,11 @@ public class Merge2 {
      * Implementation of MergeSort.
      * @param arr: given array to be sorted
      * @return a sorted array in ascending order
-     * @note: Here, as I am self-implementing this mergeSort,
+     * Note: Here, as I am self-implementing this mergeSort,
      * I realize I requested some memory storage to create new smaller arrays.
      * which is one draw back of improving time complexity.
      */
     public static Comparable[] sort(Comparable[] arr) {
-
         // Base case: either empty array or array of length 1, return it.
         if (arr.length < 2) return arr;
 
@@ -46,11 +45,11 @@ public class Merge2 {
     /**
      * Helper method for mergeSort.
      * Merge two array together so that all elements maintains the ascending order
-     * @param arr1
-     * @param arr2
+     * @param arr1: "left half" array
+     * @param arr2: "right half" aray
      * @return the combined, sorted array
      */
-    public static Comparable[] merge(Comparable[] arr1, Comparable[] arr2){
+    private static Comparable[] merge(Comparable[] arr1, Comparable[] arr2){
         int size1 = arr1.length;
         int size2 = arr2.length;
 
