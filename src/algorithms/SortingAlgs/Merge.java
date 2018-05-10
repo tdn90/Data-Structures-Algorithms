@@ -1,7 +1,5 @@
 package algorithms.SortingAlgs;
 
-import java.util.Arrays;
-
 public class Merge extends SortAlgs{
     private static Comparable[] extra;
 
@@ -12,7 +10,7 @@ public class Merge extends SortAlgs{
         sortHelper(arr,0,size-1);
     }
 
-    public static void sortHelper(Comparable[] arr, int low, int high){
+    private static void sortHelper(Comparable[] arr, int low, int high){
         if (low >= high) return;
         int mid = (low+high)/2;
         sortHelper(arr, low, mid);
@@ -20,7 +18,7 @@ public class Merge extends SortAlgs{
         merge(arr, low, mid, high);
     }
 
-    public static void merge(Comparable[] arr, int low, int mid, int high) {
+    private static void merge(Comparable[] arr, int low, int mid, int high) {
         for (int i = low; i <= high; i++) extra[i] = arr[i];
         int i = low;
         int j = mid+1;
@@ -40,15 +38,5 @@ public class Merge extends SortAlgs{
                 arr[k++] = extra[j++];
             }
         }
-    }
-
-    public static void main(String[] args) {
-        Integer[] arr = new Integer[8];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int) (Math.random()*100);
-        }
-        System.out.println(Arrays.deepToString(arr));
-        sort(arr);
-        System.out.println(Arrays.deepToString(arr));
     }
 }
