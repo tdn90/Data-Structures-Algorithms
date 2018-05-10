@@ -7,11 +7,11 @@ public class Quick2 {
 
     /**
      * Recursive quickSort
-     * @param arr
-     * @param start
-     * @param end
+     * @param arr: array to be sorted
+     * @param start: start index to sort
+     * @param end: end index to sort
      */
-    public static void quickSortHelper(Comparable[] arr, int start, int end) {
+    private static void quickSortHelper(Comparable[] arr, int start, int end) {
         if (start < end) {
             int pivot = partition(arr, start, end);
 
@@ -36,7 +36,7 @@ public class Quick2 {
      * @param end: ending index point
      * @return the pivot's final position in the array
      */
-    public static int partition(Comparable[] arr, int start, int end) {
+    private static int partition(Comparable[] arr, int start, int end) {
         // I'll choose the ending element as my pivot
         Comparable pivot = arr[end];
 
@@ -67,12 +67,12 @@ public class Quick2 {
 
     /**
      * Helper method for swapping numbers in the array
-     * @condition: arr.length > 0; i < arr.length; j < arr.length
+     * Condition: arr.length > 0; i < arr.length; j < arr.length
      * @param arr: array given
      * @param i: an index of the element we want to swap
      * @param j: another index of the element we want to swap
      */
-    public static void swap(Comparable[] arr, int i, int j) {
+    private static void swap(Comparable[] arr, int i, int j) {
         Comparable current = arr[i];
         arr[i] = arr[j];
         arr[j] = current;
