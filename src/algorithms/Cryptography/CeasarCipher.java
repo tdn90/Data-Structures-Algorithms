@@ -16,8 +16,8 @@ public class CeasarCipher {
      * @return an alphabet which is shifted forwards (backwards if negative)
      * by the given value from the original alphabet
      */
-    public static String shiftAlp(int shift) {
-        String result = "";
+    private static String shiftAlp(int shift) {
+        StringBuilder result = new StringBuilder();
         if (shift > 26) {
             shift = shift % 26;
         }
@@ -26,14 +26,14 @@ public class CeasarCipher {
         }
         int start = (int) 'A';
 
-        for (int i = 0 + shift; i <= (int) 'Z' - 'A' + shift; i++) {
+        for (int i = shift; i <= (int) 'Z' - 'A' + shift; i++) {
             int val = (start + i);
             if (val > (int) 'Z') {
                 val = (int) 'A' + val % (int) 'Z' - 1;
             }
-            result += (char) val + "";
+            result.append((char) val);
         }
-        return result;
+        return result.toString();
     }
 
     /**
@@ -42,34 +42,34 @@ public class CeasarCipher {
      * @param str: given String
      * @return a string, contains only letters, all capitalized
      */
-    public static String normalizeText(String str) {
-        String result = "";
+    private static String normalizeText(String str) {
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < str.length(); i++) {
             char current = str.charAt(i);
             int curVal = (int) current;
             if (curVal >= 65 && curVal < 65 + 26) {
-                result += "" + current;
+                result.append("").append(current);
             }
             else if (curVal >= 97 && curVal < 97 + 26) {
                 String cur = current + "";
                 cur = cur.toUpperCase();
-                result += cur;
+                result.append(cur);
             }
         }
-        return result;
+        return result.toString();
     }
 
     /**
-     * @condition: the String given must be normalized
+     * Condition: the String given must be normalized
      * @param str: the given String to be encrypted
      * @param key: this is the shifting value
      * @return a String being shifted by the given key value
      */
-    public static String caesarify(String str, int key) {
+    private static String caesarify(String str, int key) {
         String original = shiftAlp(0);
         String shifted = shiftAlp(key);
 
-        Map<Character, String> dict = new HashMap<Character, String>();
+        Map<Character, String> dict = new HashMap<>();
 
         for (int i = 0; i < original.length(); i++) {
             Character sub1 = original.charAt(i);
@@ -77,13 +77,13 @@ public class CeasarCipher {
             dict.put(sub1, sub2);
         }
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < str.length(); i++) {
             Character sub = str.charAt(i);
-            result = result + dict.get(sub);
+            result.append(dict.get(sub));
         }
 
-        return result;
+        return result.toString();
     }
 
     /**
@@ -91,18 +91,18 @@ public class CeasarCipher {
      * @param num: number of character per group
      * @return a String consists of the input String broken into groups
      * with the number of letters specified
-     * @rule: if there are not enough letters in the input String
+     * Rule: if there are not enough letters in the input String
      * to fill out all the groups, add 'x's to complete.
-     * @condition: num > 0, str != null
+     * Condition: num > 0, str != null
      */
-    public static String groupify(String str, int num) {
+    private static String groupify(String str, int num) {
         if (str.length() <= num) {
             int xToAdd = num - str.length();
-            String result = str;
+            StringBuilder result = new StringBuilder(str);
             for (int i = 0; i < xToAdd; i++) {
-                result += "x";
+                result.append("x");
             }
-            return result;
+            return result.toString();
         }
         else {
             return str.substring(0, num) + " " + groupify(str.substring(num), num);
@@ -115,7 +115,7 @@ public class CeasarCipher {
      * @param num: group's size
      * @return the degroupified version of the encrypted message
      */
-    public static String deGroupify(String str, int num) {
+    private static String deGroupify(String str, int num) {
         return deGroupHelper(str.replaceAll(" ", ""), num);
     }
 
@@ -126,14 +126,14 @@ public class CeasarCipher {
      * @param num: group's size
      * @return the degroupified version of the encrypted message
      */
-    public static String deGroupHelper (String str, int num) {
+    private static String deGroupHelper(String str, int num) {
         if (str.length() <= num) {
-            String result = "";
+            StringBuilder result = new StringBuilder();
             for (int i = 0; i < str.length(); i ++) {
                 if (str.substring(i, i + 1).equals("x")) break;
-                result += str.substring(i, i + 1);
+                result.append(str.substring(i, i + 1));
             }
-            return result;
+            return result.toString();
         }
         else {
             return str.substring(0, num) + deGroupHelper(str.substring(num), num);
@@ -148,7 +148,7 @@ public class CeasarCipher {
      * @param size: group's size
      * @return the encrypted String
      */
-    public static String encrypt(String str, int key, int size) {
+    private static String encrypt(String str, int key, int size) {
         String result = str;
         result = normalizeText(result);
         result = caesarify(result, key);
@@ -163,7 +163,7 @@ public class CeasarCipher {
      * @param size: group's size
      * @return the original message
      */
-    public static String decrypt(String str, int key, int size){
+    private static String decrypt(String str, int key, int size){
         String result = str;
         result = deGroupify(result, size);
         result = caesarify(result, - key);
