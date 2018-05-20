@@ -1,6 +1,6 @@
-package tnguyen4.hw5;
+package dataStruct;
 
-import edu.princeton.cs.algs4.StdOut;
+//TODO: give credit to the book and professor Heneiman
 
 /**
  * Minimum implementation of AVL balanced binary tree.
@@ -230,9 +230,13 @@ public class AVL<Key extends Comparable<Key>> {
 	private void inorder(Node n) {
 		if (n != null) {
 			inorder (n.left);
-			StdOut.println (n.key);
+			visit(n);
 			inorder (n.right);
 		}
+	}
+
+	private void visit(Node n) {
+		System.out.println(n.key);
 	}
 
 	// traversal ideas
@@ -242,7 +246,7 @@ public class AVL<Key extends Comparable<Key>> {
 		if (n != null) {
 			postorder (n.left);
 			postorder (n.right);
-			StdOut.println (n.key);
+			visit(n);
 		}
 	}
 
@@ -326,12 +330,12 @@ public class AVL<Key extends Comparable<Key>> {
 	public Iterable<Key> keys() { return keys(min(), max()); }
 
 	public Iterable<Key> keys(Key lo, Key hi) {
-		Queue<Key> queue = new Queue<Key>();
+		LinkedList<Key> queue = new LinkedList<>();
 		keys(root, queue, lo, hi);
 		return queue;
-	} 
+	}
 
-	private void keys(Node node, Queue<Key> queue, Key lo, Key hi) { 
+	private void keys(Node node, LinkedList<Key> queue, Key lo, Key hi) {
 		if (node == null) return; 
 
 		// check if contained within this range
