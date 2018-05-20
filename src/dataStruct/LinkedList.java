@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  * This is my self-implemented version of Doubly Linked List
  * @param <T>: Generic data type of objects to be dealt with
  */
-public class LinkedList<T> implements List<T>, Queue<T>, Stack<T>{
+public class LinkedList<T> implements List<T>, Queue<T>, Stack<T>, Iterable{
     private static class Node<T> {
         private T content;
         private Node<T> prev;
@@ -37,6 +37,11 @@ public class LinkedList<T> implements List<T>, Queue<T>, Stack<T>{
     private Node<T> head;
     private Node<T> tail;
     private int size;
+
+    public LinkedList() {
+        head = tail = null;
+        size = 0;
+    }
 
     /**
      * Appends the specified object to the end of the list
@@ -301,6 +306,49 @@ public class LinkedList<T> implements List<T>, Queue<T>, Stack<T>{
                 T result = nextNode.content;
                 nextNode = nextNode.next;
                 return result;
+            }
+        }
+
+        /**
+         * Removes from the underlying collection the last element returned
+         * by this iterator (optional operation).  This method can be called
+         * only once per call to {@link #next}.  The behavior of an iterator
+         * is unspecified if the underlying collection is modified while the
+         * iteration is in progress in any way other than by calling this
+         * method.
+         *
+         * @throws UnsupportedOperationException if the {@code remove}
+         *                                       operation is not supported by this iterator
+         * @throws IllegalStateException         if the {@code next} method has not
+         *                                       yet been called, or the {@code remove} method has already
+         *                                       been called after the last call to the {@code next}
+         *                                       method
+         * @implSpec The default implementation throws an instance of
+         * {@link UnsupportedOperationException} and performs no other action.
+         */
+        @Override
+        public void remove() {
+            if (hasNext()) {
+                boolean opened = nextNode.prev == null;
+                boolean closed = nextNode.next == null;
+                if (opened || closed) {
+                    if (opened && closed) head = tail = null; // Remove only element
+                    // Remove head
+                    else if (opened) {
+                        nextNode.next.prev = null;
+                        nextNode = nextNode.next;
+                    }
+                    // Remove tail
+                    else {
+                        nextNode.prev.next = null;
+                        nextNode = nextNode.prev;
+                    }
+                }
+                // Remove middle element
+                else {
+                    nextNode.prev.next = nextNode.next;
+                    nextNode.next.prev = nextNode.prev;
+                }
             }
         }
     }
