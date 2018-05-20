@@ -136,13 +136,13 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return new ArrayListIterator<>();
+        return new ArrayListIterator();
     }
 
-    private class ArrayListIterator<T> implements Iterator<T>{
+    private class ArrayListIterator implements Iterator<T>{
         private int curIdx;
 
-        public ArrayListIterator() {
+        ArrayListIterator() {
             curIdx = 0;
         }
         /**
@@ -167,7 +167,7 @@ public class ArrayList<T> implements List<T> {
         public T next() {
             if (!hasNext()) throw new NoSuchElementException();
             else {
-                return (T) arr[curIdx++];
+                return arr[curIdx++];
             }
         }
     }
