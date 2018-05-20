@@ -1,5 +1,12 @@
 package algorithms.SortingAlgs;
 
+/**
+ * @author Professor Sedgewick, Professor Heneiman
+ * Credit goes to two professors above.
+ * I just try to re-write this sorting algorithm to best understand it.
+ * This is a nice and efficient algorithm, using Divide-And-Conquer technique.
+ * Time complexity: O(n * logn) in any case
+ */
 public class Merge extends SortAlgs{
     private static Comparable[] extra;
 
@@ -13,11 +20,15 @@ public class Merge extends SortAlgs{
     private static void sortHelper(Comparable[] arr, int low, int high){
         if (low >= high) return;
         int mid = (low+high)/2;
-        sortHelper(arr, low, mid);
-        sortHelper(arr, mid+1, high);
-        merge(arr, low, mid, high);
+        sortHelper(arr, low, mid); // sort left recursively
+        sortHelper(arr, mid+1, high); // sort right recursively
+        merge(arr, low, mid, high); // merge two sorted arrays
     }
 
+    /**
+     * "Merge" two sides of given arrays (from low to mid, and from mid to high)
+     * After merging complete, the given array is sorted from low to high
+     */
     private static void merge(Comparable[] arr, int low, int mid, int high) {
         for (int i = low; i <= high; i++) extra[i] = arr[i];
         int i = low;
