@@ -1,4 +1,8 @@
-package tnguyen4.hw5;
+package algorithms.Games.WordGames;
+
+import dataStruct.ChainingHashMap;
+import dataStruct.LinkedList;
+import dataStruct.Queue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,10 +13,10 @@ import java.util.Scanner;
 // Fun word pyramid game 
 public class WordPyramid {
     // Map word to integer ID
-    private static SeparateChainingHashST<String,Integer> table = new SeparateChainingHashST<>();
+    private static ChainingHashMap<String,Integer> table = new ChainingHashMap<>();
 
     // Map integer ID to word
-    private static SeparateChainingHashST<Integer,String> reverse = new SeparateChainingHashST<>();
+    private static ChainingHashMap<Integer,String> reverse = new ChainingHashMap<>();
 
     public static void main(String[] args) throws FileNotFoundException {
         playWordPyrapid(7);
@@ -37,7 +41,7 @@ public class WordPyramid {
         int src = table.get(in);
         boolean[] marked = new boolean[g.V()];
         int[] edgeTo = new int[g.V()];
-        Queue<Integer> toVisit = new Queue<>();
+        Queue<Integer> toVisit = new LinkedList<>();
         int dest = -1;
 
         toVisit.enqueue(src);
@@ -77,8 +81,8 @@ public class WordPyramid {
 
     private static void playWordPyrapid(int maxInLength) throws FileNotFoundException {
         // Create an array of Queue, where each Queue present a list of elements of the same size
-        Queue[] sizeArr = new Queue[maxInLength];
-        for (int n = 0; n < sizeArr.length; n++) sizeArr[n] = new Queue();
+        LinkedList[] sizeArr = new LinkedList[maxInLength];
+        for (int n = 0; n < sizeArr.length; n++) sizeArr[n] = new LinkedList();
         int count = 0;
 
         Scanner sc = new Scanner(new File ("words.english.txt"));
@@ -101,8 +105,8 @@ public class WordPyramid {
         // Expensive operation here
         // Can only say quadratic performance (though looks cubic or even n^4)
         for (int i = 0; i < sizeArr.length-1; i++) {
-            Queue cur1 = sizeArr[i];
-            Queue cur2 = sizeArr[i+1];
+            LinkedList cur1 = sizeArr[i];
+            LinkedList cur2 = sizeArr[i+1];
             for (Object ob1 : cur1) {
                 for (Object ob2 : cur2) {
                     String str1 = (String) ob1;
