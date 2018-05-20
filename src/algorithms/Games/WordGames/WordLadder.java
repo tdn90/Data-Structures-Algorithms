@@ -1,7 +1,9 @@
-package tnguyen4.hw5;
+package algorithms.Games.WordGames;
 
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
+import dataStruct.AVL;
+import dataStruct.ChainingHashMap;
+import dataStruct.LinkedList;
+import dataStruct.Queue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,10 +18,10 @@ public class WordLadder {
 	 * Represent the mapping of (uniqueID, 4-letter word)
 	 */
 	// Map word to integer ID
-	private static SeparateChainingHashST<String,Integer> table = new SeparateChainingHashST<>();
+	private static ChainingHashMap<String,Integer> table = new ChainingHashMap<>();
 
 	// Map integer ID to word
-	private static SeparateChainingHashST<Integer,String> reverse = new SeparateChainingHashST<>();
+	private static ChainingHashMap<Integer,String> reverse = new ChainingHashMap<>();
 
 	/**
 	 * Determine if the two same-sized words are off by just a single character.
@@ -69,20 +71,21 @@ public class WordLadder {
 			}
 		}
 
+		Scanner input = new Scanner(System.in);
 		// Ask for user input
-		StdOut.println("Enter word to start from (all in lower case):");
-		String start = StdIn.readString().toLowerCase();
+		System.out.println("Enter word to start from (all in lower case):");
+		String start = input.next().toLowerCase();
 		// Validate that this is an actual four-letter words in the dictionary
 		if (!avl.contains(start)) {
-			StdOut.println (start + " is not a valid word in the dictionary.");
+			System.out.println (start + " is not a valid word in the dictionary.");
 			System.exit(-1);
 		}
 
-		StdOut.println("Enter word to end at (all in lower case):");
-		String end = StdIn.readString().toLowerCase();
+		System.out.println("Enter word to end at (all in lower case):");
+		String end = input.next().toLowerCase();
 		// Validate that this is an actual four-letter words in the dictionary
 		if (!avl.contains(end)) {
-			StdOut.println (end + " is not a valid word in the dictionary.");
+			System.out.println (end + " is not a valid word in the dictionary.");
 			System.exit(-1);
 		}
 
@@ -96,7 +99,7 @@ public class WordLadder {
 		// Do Breadth-First Search here to determine the shortest path
 		boolean[] marked = new boolean[count];
 		int[] edgeTo = new int[count];
-		Queue<Integer> toVisit = new Queue<>();
+		Queue<Integer> toVisit = new LinkedList<>();
 		toVisit.enqueue(src);
 		marked[src] = true;
 
