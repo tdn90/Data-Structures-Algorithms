@@ -1,5 +1,11 @@
 package algorithms.SortingAlgs;
 
+/**
+ * @author nguye
+ * This is my written version of Bubble Sort.
+ * Probably the worst sorting algorithm commonly known.
+ * Time complexity: O(n^2) in worst case
+ */
 public class Bubble extends SortAlgs{
     public static void sort(Comparable[] arr) {
         boolean sorted = false;
