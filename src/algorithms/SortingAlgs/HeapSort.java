@@ -1,6 +1,16 @@
 package algorithms.SortingAlgs;
 
+/**
+ * @author nguye
+ * This is my written version of Heap Sort.
+ * Make use of heap features (sink, swim / heapify)
+ * Time complexity: O(n * logn) in worst case
+ */
 public class HeapSort extends SortAlgs{
+    /**
+     * Attempt to sort the given array
+     * @param arr: given array to be sorted
+     */
     public static void sort(Comparable[] arr) {
         // Turn the array from index 1 to arr.length-1 into a heap
         for (int i = arr.length/2; i > 0; i--) {
@@ -14,7 +24,7 @@ public class HeapSort extends SortAlgs{
         }
 
         // Done sort the array from 1 to arr.length-1, now "insert" the first element in
-        // Basically use insertion sort principle
+        // Basically use insertion sort principle here
         int k = 0;
         Comparable first = arr[0];
         while (k < arr.length-1 && arr[k+1].compareTo(first) < 0 ) {
@@ -24,6 +34,11 @@ public class HeapSort extends SortAlgs{
         arr[k] = first;
     }
 
+    /**
+     * Attempt to restore the heap characteristic
+     * @param arr: given array
+     * @param idx: index of the element to swim up
+     */
     private static void swim(Comparable[] arr, int idx) {
         while (idx > 1 && morePrior(arr, idx, idx/2)) {
             exch(arr, idx,idx/2);
@@ -31,6 +46,11 @@ public class HeapSort extends SortAlgs{
         }
     }
 
+    /**
+     * Attempt to restore the heap characteristic
+     * @param arr: given array
+     * @param idx: index of the element to sink down
+     */
     private static void sink(Comparable[] arr, int idx, int N) {
         int bigBro = morePriorChild(arr, idx, N);
         while (bigBro > 0 && morePrior(arr, bigBro, idx)) {
@@ -40,6 +60,9 @@ public class HeapSort extends SortAlgs{
         }
     }
 
+    /**
+     * Simply a helper method for exchanging values between 2 indices
+     */
     private static void exch(Comparable[] arr, int i, int j) {
         Comparable cur = arr[i];
         arr[i] = arr[j];
@@ -60,6 +83,9 @@ public class HeapSort extends SortAlgs{
         else return morePrior(arr, leftIdx, rightIdx) ? leftIdx : rightIdx;
     }
 
+    /**
+     * Helper method to check priorities
+     */
     private static boolean morePrior(Comparable[] arr, int a, int b) {
         return arr[a].compareTo(arr[b]) >= 0;
     }
