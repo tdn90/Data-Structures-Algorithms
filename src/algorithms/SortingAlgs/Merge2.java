@@ -1,18 +1,17 @@
 package algorithms.SortingAlgs;
-
 import java.util.Arrays;
 
 /**
- * Second version of Merge Sort
+ * @author nguye
+ * This is my version of Merge Sort.
+ * Basically also use Divide-And-Conquer to sort the array.
+ * Time-complexity: O(n * logn)
  */
 public class Merge2 {
     /**
      * Implementation of MergeSort.
      * @param arr: given array to be sorted
      * @return a sorted array in ascending order
-     * Note: Here, as I am self-implementing this mergeSort,
-     * I realize I requested some memory storage to create new smaller arrays.
-     * which is one draw back of improving time complexity.
      */
     public static Comparable[] sort(Comparable[] arr) {
         // Base case: either empty array or array of length 1, return it.
