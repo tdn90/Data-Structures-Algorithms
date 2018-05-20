@@ -1,4 +1,4 @@
-package tnguyen4.hw5;
+package algorithms.Games.WordGames;
 
 import java.util.Iterator;
 

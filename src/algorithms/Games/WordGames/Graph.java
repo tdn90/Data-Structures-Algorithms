@@ -1,6 +1,7 @@
-package tnguyen4.hw5;
+package algorithms.Games.WordGames;
 
-import edu.princeton.cs.algs4.In;
+import dataStruct.LinkedList;
+import dataStruct.Queue;
 
 /** Standard undirected Grah implementation, as starting point for Q3 on HW5. */
 public class Graph {
@@ -23,17 +24,6 @@ public class Graph {
         for (int v = 0; v < V; v++) {
             adj[v] = new Bag<Integer>();
         }
-    }
-
-    /** Added this method for day20 to load graph from file. */
-    public Graph(In in) {
-    	this (in.readInt());
-    	int E = in.readInt();
-    	for (int i = 0; i < E; i++) {
-    		int v = in.readInt();
-    		int w = in.readInt();
-    		addEdge (v,w);
-    	}
     }
 
     public int V() { return V; }
@@ -107,7 +97,7 @@ public class Graph {
         int max = 0;
         boolean marked[] = new boolean[V];
         int numLengthTo[] = new int[V];
-        Queue<Integer> toVisit = new Queue<>();
+        Queue<Integer> toVisit = new LinkedList<>();
         toVisit.enqueue(s);
         marked[s] = true;
 
