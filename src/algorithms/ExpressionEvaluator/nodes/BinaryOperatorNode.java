@@ -1,8 +1,5 @@
 package algorithms.ExpressionEvaluator.nodes;
 
-/**
- * Represent a binary operation. There is no need to changes this class.
- */
 public abstract class BinaryOperatorNode extends OperatorNode {
 	public BinaryOperatorNode(String op) {
 		super(op);

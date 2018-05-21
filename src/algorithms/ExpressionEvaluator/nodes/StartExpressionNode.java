@@ -1,9 +1,5 @@
 package algorithms.ExpressionEvaluator.nodes;
 
-/**
- * This subclass is only used by the EvaluateBonus question....
- * Ignore if you are only working on main one.
- */
 public class StartExpressionNode extends NoParameterOperatorNode {
 
 	public StartExpressionNode(String op) {

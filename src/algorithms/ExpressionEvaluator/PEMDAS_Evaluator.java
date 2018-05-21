@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  * Stub code from p. 129 of Sedgewick (4ed) revised to construct binary expression tree from a
- * parenthetical infix expression
+ * parenthetical infix expression.
  */
 public class PEMDAS_Evaluator {
     public static void main(String[] args) {
@@ -71,9 +71,12 @@ public class PEMDAS_Evaluator {
                         }
                     }
 
-                    // The magic happens here
-                    // Operator with lower priority is "pushed up"
-                    // Those with higher priority is "pushed down"
+                    /*
+                     * My implementation to process and evaluate the expression tree
+                     * The magic happens here:
+                     * Operator with lower priority is "pushed up"
+                     * Those with higher priority is "pushed down"
+                     */
                     OperatorNode check = ops.pop();
                     while (check.isOperator()) {  // If operator IS an operator, then have unexpectedly
                         // run into more of the expression.

@@ -1,8 +1,5 @@
 package algorithms.ExpressionEvaluator.nodes;
 
-/**
- * Example of a no-parameter operation node, that returns the constant e.
- */
 public class ENode extends NoParameterOperatorNode {
 
 	public ENode(String op) {
