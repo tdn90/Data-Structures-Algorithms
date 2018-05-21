@@ -1,5 +1,9 @@
 package dataStruct;
 
+/**
+ * @author nguye
+ * @param <T>
+ */
 public abstract class Heap<T extends Comparable> {
     protected Comparable[] arr;
     private int size;
@@ -92,6 +96,7 @@ public abstract class Heap<T extends Comparable> {
         arr[j] = cur;
     }
 
+    // This method is abstract so we can easily implement any type of comparisons we want.
     public abstract boolean morePrior(int a, int b);
 
     boolean isHeap(int idx) {

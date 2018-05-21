@@ -1,5 +1,9 @@
 package dataStruct;
 
+/**
+ * @author nguye
+ * @param <T>
+ */
 public class MaxHeap<T extends Comparable> extends Heap<T>{
     @Override
     public boolean morePrior(int a, int b) {
