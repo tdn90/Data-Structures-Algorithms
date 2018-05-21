@@ -18,18 +18,6 @@ public class BinaryTree<T extends Comparable<T>> {
             rightChild = null;
         }
 
-        /*
-        private TreeNode<T> findChild (T object) {
-            if (leftChild == null) {
-                return rightChild;
-            }
-            else {
-                if (leftChild.content.equals(object)) return leftChild;
-                else return rightChild;
-            }
-        }
-        */
-
         /**
          * Check to see if this tree node is a leaf node (no children)
          * @return true if this node is a leaf node, false otherwise
@@ -52,16 +40,6 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     private TreeNode<T> root;
-
-    BinaryTree() {
-        root = null;
-    }
-
-    /*
-    public BinaryTree(TreeNode<T> root) {
-        this.root = root;
-    }
-    */
 
     /**
      * Find the maximum value in the binary tree, according to the T's natural order
