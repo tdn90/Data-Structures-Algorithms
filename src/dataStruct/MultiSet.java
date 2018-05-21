@@ -4,6 +4,10 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * @author nguye
+ *
+ * This is an interesting assignment for Algorithms (CS2223)
+ *
  * This data type offers Bag-like behavior with the added constraint that it tries
  * to minimize space by keeping track of the count of each item in the bag.
  *
@@ -11,13 +15,6 @@ import java.util.NoSuchElementException;
  *
  * In all of the performance specifications, N refers to the total number of items
  * in the MultiSet while U refers to the total number of unique items.
- *
- * Note that you will only have U nodes, one for each distinct item, and so U <= N; however,
- * you can't know in advance HOW many duplicates will exist, so in the worst case,
- * some computations will still depend upon N.
- *
- * Once you complete this implementation, you will need to provide empirical evidence
- * to support the performance specifications of each method.
  *
  * @param <Item>
  */
@@ -187,7 +184,7 @@ public class MultiSet<Item extends Comparable<Item>> {
      * Technically a constructor for Node
      * @param it: the item used to create the node
      * @param amt: amount of item to be create
-     * @return: a new node created, with the given item and amount
+     * @return a new node created, with the given item and amount
      */
     private Node makeNode(Item it, int amt) {
         Node newNode = new Node();
@@ -201,7 +198,7 @@ public class MultiSet<Item extends Comparable<Item>> {
      * Pre-condition: N >= U > 0
      * Performance: O(U)
      * @param it: item to check whether to be duplicated
-     * @return: the duplicate Node, or null if Item is not in this MultiSet
+     * @return the duplicate Node, or null if Item is not in this MultiSet
      */
     private Node getDuplicate(Item it) {
         Node cur = head;
@@ -399,6 +396,11 @@ public class MultiSet<Item extends Comparable<Item>> {
     }
 
     // BONUS QUESTION
+
+    /**
+     * Implementing iterator for MultiSet
+     * @return a multiset iterator
+     */
     public Iterator<Item> iterator() {
         return new MultiSetIterator();
     }
