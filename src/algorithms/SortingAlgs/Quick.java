@@ -1,11 +1,22 @@
 package algorithms.SortingAlgs;
 
+/**
+ * @author Professor Sedgewick, Professor Heneiman
+ * Credit goes to two professors above.
+ * I just try to re-write this sorting algorithm to best understand it.
+ * This is a nice and efficient algorithm, using Divide-And-Conquer technique.
+ * Practically much more efficient than Merge Sort.
+ * Time complexity: O(n * logn) in any case
+ */
 public class Quick extends SortAlgs{
     public static void sort(Comparable[] arr) {
         shuffle(arr);
         sortHelper(arr,0,arr.length-1);
     }
 
+    /**
+     * Attempt to randomly shuffle the whole array to achieve random order
+     */
     public static void shuffle(Comparable[] arr) {
         int size = arr.length;
         for (int i = 0; i < size; i++) {
@@ -17,10 +28,20 @@ public class Quick extends SortAlgs{
     private static void sortHelper(Comparable[] arr, int low, int high) {
         if (low >= high) return;
         int pivotPos = partition(arr, low, high);
-        sortHelper(arr, low, pivotPos-1);
-        sortHelper(arr, pivotPos+1, high);
+        sortHelper(arr, low, pivotPos-1); // sort array on the left side of the pivot
+        sortHelper(arr, pivotPos+1, high); // sort array on the right side of the pivot
     }
 
+    /**
+     * Attempt to find the pivot position.
+     * Upon method completion, two conditions are true:
+     * All elements on the left half of the pivot is less than the pivot element
+     * All elements on the right half of the pivot is greater than the pivot element
+     * @param arr: given array
+     * @param low: start index to find pivot
+     * @param high: end index to find pivot
+     * @return the pivot position
+     */
     private static int partition(Comparable[] arr, int low, int high) {
         // pivot is arr[low]
         int leftCur = low;
