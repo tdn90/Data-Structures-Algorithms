@@ -3,6 +3,12 @@ package dataStruct;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * @author nguye
+ * A helper class for ChainingHashMap
+ * @param <K>
+ * @param <V>
+ */
 public class Chain<K, V> {
     class Entry {
         private K key;

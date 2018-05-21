@@ -3,6 +3,12 @@ package dataStruct;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * @author nguye
+ * HashMap implementation using chaining hashing technique.
+ * @param <K>
+ * @param <V>
+ */
 public class ChainingHashMap<K,V> {
     private Chain<K,V>[] map;
     private final int DEFAULT_MAP_SIZE = 8;
