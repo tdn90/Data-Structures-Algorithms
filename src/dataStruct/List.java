@@ -2,6 +2,11 @@ package dataStruct;
 
 import java.util.Iterator;
 
+/**
+ * @author nguye
+ * List interface
+ * @param <T>
+ */
 public interface List<T> {
     /**
      * Appends the specified object to the end of the list

@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * @author nguye
  * This is my self-implemented version of Java's / Oracle's ArrayList
  * @param <T>: Generic data type of objects to be dealt with
  */

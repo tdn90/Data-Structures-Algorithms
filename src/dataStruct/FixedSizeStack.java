@@ -4,6 +4,11 @@ import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * @author nguye
+ * Learnt from Prof. Heneiman's lecture. Self-implemented (probably) the same version of that in class.
+ * @param <T>
+ */
 public class FixedSizeStack<T> implements Stack<T>{
     private T[] arr;
     private int nextPos;

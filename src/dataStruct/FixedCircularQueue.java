@@ -2,6 +2,11 @@ package dataStruct;
 
 import java.util.NoSuchElementException;
 
+/**
+ * @author nguye
+ * Learnt from lecture of Prof. Heneiman. Self-implemented (probably) the similar version.
+ * @param <T>
+ */
 public class FixedCircularQueue<T> implements Queue<T> {
     private T[] arr;
     private int size, first, last;

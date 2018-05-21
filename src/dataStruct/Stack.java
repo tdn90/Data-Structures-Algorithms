@@ -1,7 +1,8 @@
 package dataStruct;
 
 /**
- * Last In First Out (LIFO)
+ * @author nguye
+ * Last In First Out (LIFO) data structure
  */
 public interface Stack<T> {
     /**

@@ -1,7 +1,8 @@
 package dataStruct;
 
 /**
- * First In First Out (FIFO)
+ * @author nguye
+ * First In First Out (FIFO) data structure
  * @param <T>
  */
 public interface Queue<T> {
