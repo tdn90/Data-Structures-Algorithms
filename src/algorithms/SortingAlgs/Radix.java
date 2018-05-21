@@ -1,8 +1,14 @@
 package algorithms.SortingAlgs;
-
 import dataStruct.LinkedList;
 import dataStruct.Queue;
 
+/**
+ * @author nguye
+ * This is my version of Radix Sort, effectively using Queue as "baskets"
+ * This is a very effcient sorting algorithms, though only work on integer arrays.
+ * It uses the principle of Counting Sort to appropriately put each elements in the right order.
+ * Time-complexity: O(n*k) where n is arr.length, k is the number of digits of the max element.
+ */
 public class Radix {
     public static void sort(int[] arr) {
         int max = findMax(arr);
@@ -10,6 +16,11 @@ public class Radix {
         for (int i = 0; i < maxDigit; i++) countingSort(arr, i);
     }
 
+    /**
+     * Do Counting Sort on the digit specified
+     * @param arr: given array to be sorted according to specified digit
+     * @param numDigit: the position of digit from right to left, starting from 0.
+     */
     private static void countingSort(int[] arr, int numDigit) {
         Queue[] baskets = new Queue[10];
         // Initiates all baskets
@@ -33,7 +44,7 @@ public class Radix {
 
     /**
      * @param num: given number
-     * @param numDigit: specified num Digit to retrieve. NumDigit goes from left to right, starts from 0
+     * @param numDigit: specified num Digit to retrieve. NumDigit goes from right to left, starts from 0
      * @return the digit number at the specified digit location
      */
     private static int getNumDigit(int num, int numDigit) {
@@ -53,6 +64,11 @@ public class Radix {
         return max;
     }
 
+    /**
+     * Attempts to find the number of digit of the given number
+     * @param num: given number
+     * @return: the number of digits of specified number
+     */
     private static int numDigits(int num) {
         if (num == 0) return 1;
         int numDigit = 0;
