@@ -1,8 +1,7 @@
 package dataStruct;
-
-//TODO: give credit to the book and professor Heneiman
-
 /**
+ * @author Professor Sedgewick, Professor Heneiman.
+ *
  * Minimum implementation of AVL balanced binary tree.
  * 
  * Note this does not offer SymbolTable behavior, but rather just stores Key objects.
