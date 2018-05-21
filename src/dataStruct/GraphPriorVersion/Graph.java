@@ -45,7 +45,7 @@ public abstract class Graph<T> {
      * Get all the neighbors of a specific node.
      * Neighbors are defined as nodes that connect to the given node.
      * @param node: given node to get the neighbors
-     * @return: a set of nodes that are neighbors to the given node.
+     * @return a set of nodes that are neighbors to the given node.
      * Return an empty set if the node has no neighbor.
      * Return null if the node is not in the graph.
      */
@@ -105,7 +105,7 @@ public abstract class Graph<T> {
 
     /**
      * Get the number of edges in this graph
-     * @return: the total number of edges in this graph
+     * @return the total number of edges in this graph
      */
     public int getNumEdges() {
         return numEdges;
@@ -113,7 +113,7 @@ public abstract class Graph<T> {
 
     /**
      * Return every Nodes in this graph
-     * @return: the set of all Nodes in this graph
+     * @return the set of all Nodes in this graph
      */
     public Set<Node<T>> getAllNodes() {
         return adjacencySets.keySet();
@@ -121,7 +121,7 @@ public abstract class Graph<T> {
 
     /**
      * @param node: given node
-     * @return: a set of all edges of a given node
+     * @return a set of all edges of a given node
      */
     public Set<Edge<T>> getNodeEdges(Node<T> node) {
         return adjacencySets.get(node);
@@ -130,7 +130,7 @@ public abstract class Graph<T> {
     /**
      *
      * @param node: node to be checked
-     * @return: true if the node is an even node, false otherwise
+     * @return true if the node is an even node, false otherwise
      */
     public boolean isEvenNode(Node<T> node) {
         if (!containsNode(node)) return false;
@@ -160,7 +160,7 @@ public abstract class Graph<T> {
     /**
      * Traverse this graph by breadth-first search
      * @param start: starting Node to traverse
-     * @return: the path to traverse the graph with breadth-first search
+     * @return the path to traverse the graph with breadth-first search
      */
     public List<Node<T>> breathFirstTraversal(Node<T> start) {
         List<Node<T>> visited = new LinkedList<>();
@@ -208,7 +208,7 @@ public abstract class Graph<T> {
      * Attempt to find the shortest path between 2 nodes
      * @param start: the source node to start from
      * @param end: the destination node
-     * @return: a list of nodes in the path from the source node to the destination node
+     * @return a list of nodes in the path from the source node to the destination node
      */
     public List<Node<T>> findShortestPath(Node<T> start, Node<T> end) {
         if (!containsNode(start) || !containsNode(end)) return null;

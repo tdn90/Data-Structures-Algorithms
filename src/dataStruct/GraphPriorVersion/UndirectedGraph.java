@@ -1,7 +1,5 @@
 package dataStruct.GraphPriorVersion;
 
-import dataStruct.GraphPriorVersion.Graph;
-
 public class UndirectedGraph extends Graph {
 
     public UndirectedGraph() {
@@ -10,9 +8,9 @@ public class UndirectedGraph extends Graph {
 
     /**
      * Abstract method, implemented in DirectedGraph and UndirectedGraph
-     *
-     * @param src
-     * @param dest
+     * Make sure that the edge is added to both the source node and the destination node
+     * @param src: source node
+     * @param dest: destination node
      */
     @Override
     public boolean addEdge(Node src, Node dest) {

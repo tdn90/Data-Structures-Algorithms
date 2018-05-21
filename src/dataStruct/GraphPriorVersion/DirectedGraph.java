@@ -1,7 +1,5 @@
 package dataStruct.GraphPriorVersion;
 
-import dataStruct.GraphPriorVersion.Graph;
-
 public class DirectedGraph extends Graph {
 
     public DirectedGraph() {
