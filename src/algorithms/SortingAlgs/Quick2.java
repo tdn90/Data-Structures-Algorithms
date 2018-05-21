@@ -1,5 +1,12 @@
 package algorithms.SortingAlgs;
 
+/**
+ * @author nguye
+ * This is my version of Quick Sort
+ * One drawback: this might cause StackOverflow for extremely large array.
+ * Still much more efficient than Merge Sort.
+ * Time-complexity: O(n * logn)
+ */
 public class Quick2 {
     public static void sort(Comparable[] arr) {
         quickSortHelper(arr, 0, arr.length - 1);
