@@ -3,7 +3,7 @@ Data Structures & Algorithms
 
 
 I. Introduction:
-- This repository will help demonstrate my experience so far regarding Data Structures and Algorithms, one of mny vital aspects in Computer Science. 
+- This repository will help demonstrate my experience so far regarding Data Structures and Algorithms, one of the many vital aspects in Computer Science. 
 
 
 - Before we start, I would like to give special credits to: 
@@ -15,6 +15,7 @@ I. Introduction:
 With that being said, let's begin! 
 
 
+----------------------------------------------------------------------
 II. Data Structures: 
 - Here are the data structures and ADTs available in the dataStruct package: 
 
@@ -52,6 +53,7 @@ e. Graph:
 - Undirected Graph
 
 
+--------------------------------------------------------------------------------------
 III. Algorithms: 
 - There are currently 5 sub-packages in algorithms package: 
 1. SortingAlgs: 
