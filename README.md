@@ -70,7 +70,9 @@ III. Algorithms:
 ** These sorting algorithms only work for arrays of integers, whereas the others can work on arrays of any Comparable objects. 
 
 2. ExpressionEvaluator: 
-a. Package nodes: consists of provided stub classes for different type of mathematical operators. 
+
+a. Package nodes: consists of provided stub classes for different type of mathematical operators.
+
 b. PEMDAS Evaluator: based on Dijkstra two-stack algorithm, I implemented a complete expression evaluator. 
 
 3. Games (console game): 
